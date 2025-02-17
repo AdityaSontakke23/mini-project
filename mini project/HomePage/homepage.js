@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Smooth Scrolling
-    document.querySelectorAll('nav ul li a').forEach(anchor => {
+    document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             document.querySelector(this.getAttribute('href')).scrollIntoView({

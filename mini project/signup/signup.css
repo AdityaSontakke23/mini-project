@@ -3,7 +3,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #6dd5ed, #2193b0);
-    background-image: url('nature-background.jpeg');
+    background-image: url('../HomePage/nature-background.jpeg');
     background-size: cover;
     color: #fff;
     background-attachment: fixed;
