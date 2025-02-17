@@ -63,4 +63,20 @@ document.addEventListener("DOMContentLoaded", function () {
     backToTop.addEventListener("click", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
+
+
+// // signup button click
+// const signupButton = document.getElementById("signup-btn");
+
+// if (signupButton) {
+//     signupButton.addEventListener("click", function (event) {
+//         // Prevent overriding anchor behavior, only change href if necessary
+//         if (!signupButton.href) {
+//             event.preventDefault();
+//             window.location.href = "../Signup Page/signup.html"; 
+//         }
+//     });
+// }
+
+
 });
