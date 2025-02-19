@@ -8,12 +8,13 @@ body {
     color: #fff;
     background-attachment: fixed;
 }
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgba(116, 116, 116, 0.044);
+    background: rgba(116, 116, 116, 0.6);
 }
 
 h1 {
@@ -42,10 +43,10 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background: rgba(93, 93, 93, 0.6);
+    background: #21b02f
 }
 
-.signup-section {
+.login-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +54,7 @@ nav ul li a:hover {
     background: rgba(0, 0, 0, 0.6);
 }
 
-.signup-container {
+.login-container {
     background: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border-radius: 8px;
@@ -96,7 +97,7 @@ input:focus {
 .submit-btn {
     width: 100%;
     padding: 12px;
-    background: #2193b0;
+    background: #21b02f;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -105,7 +106,7 @@ input:focus {
 }
 
 .submit-btn:hover {
-    background: #1a7d9c;
+    background: #15701e;
 }
 
 p {
@@ -124,6 +125,8 @@ p a:hover {
 
 footer {
     text-align: center;
-    padding: 20px;
-    background: rgba(90, 90, 90, 0.135);
+    align-items:last baseline;
+    padding:100px;
+    background: rgba(0, 0, 0, 0.6);
+    margin-top: auto;
 }
