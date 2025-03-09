@@ -3,10 +3,25 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom, #6dd5ed, #2193b0);
-    background-image: url('../HomePage/homepage_background2.webp');
+    background-image: url('background.jpg');
     background-size: cover;
-    color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
+    min-height: 100vh;
+    color: #fff;
+    text-align: center;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
 }
 
 header {
@@ -15,11 +30,6 @@ header {
     align-items: center;
     padding: 20px;
     background: rgba(0, 0, 0, 0.6);
-}
-
-
-h1 {
-    margin: 0;
 }
 
 nav ul {
@@ -44,40 +54,25 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background: #21b02f
+    background: #2193b0;
 }
 
-.login-section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 100px 20px;
-    background: rgba(0, 0, 0, 0.6);
-}
-
-.login-container {
+.container {
+    position: relative;
+    max-width: 800px;
     background: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border-radius: 8px;
-    max-width: 500px;
-    width: 100%;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+    margin: 50px auto;
+    color: #fff;
 }
 
 h2 {
-    text-align: center;
+    font-weight: bold;
+    color: #fff;
     font-size: 2rem;
     margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 8px;
 }
 
 input {
@@ -85,9 +80,10 @@ input {
     padding: 10px;
     font-size: 1rem;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #ddd;
     background: #fff;
     color: #333;
+    margin-top: 10px;
 }
 
 input:focus {
@@ -95,33 +91,49 @@ input:focus {
     border-color: #6dd5ed;
 }
 
-.submit-btn {
+.btn-check-aqi {
+    margin-top: 15px;
     width: 100%;
-    padding: 12px;
-    background: #21b02f;
-    color: #fff;
+    background: #2193b0;
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 12px;
     font-size: 1.2rem;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-.submit-btn:hover {
-    background: #15701e;
+.btn-check-aqi:hover {
+    background: #1a7d9c;
 }
 
-p {
-    text-align: center;
+.result-card {
     margin-top: 20px;
+    padding: 15px;
+    background: #eef;
+    border-left: 5px solid #007bff;
+    border-radius: 8px;
+    color: #333;
 }
 
-p a {
-    color: #fff;
-    text-decoration: none;
+.result-card h4 {
+    font-size: 1.6rem;
+    font-weight: bold;
 }
 
-p a:hover {
-    text-decoration: underline;
+.result-card p {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+#temperature {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    font-size: 1.4rem;
+    font-weight: bold;
 }
 
 footer {

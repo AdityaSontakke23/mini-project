@@ -14,7 +14,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background: rgba(116, 116, 116, 0.044); 
+    /* background: rgba(116, 116, 116, 0.044);  */
+    background: rgba(0, 0, 0, 0.6);
 }
 
 h1 {
