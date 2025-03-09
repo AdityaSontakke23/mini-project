@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class='container my-5 text-center'>
         <h1>Thank You, " . htmlspecialchars($fullName) . "!</h1>
         <p>Your response has been recorded. We appreciate your interest in community engagement.</p>
-        <a href='HomePage/homepage.html' class='btn btn-primary'>Go to Homepage</a>
+        <a href='../HomePage/homepage.html' class='btn btn-primary'>Go to Homepage</a>
     </div>
 </body>
 </html>";
