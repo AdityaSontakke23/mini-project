@@ -64,25 +64,8 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // Dropdown toggle for "Features" navigation item
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdown = document.querySelector('.dropdown');
 
-    if (dropdownToggle && dropdown) {
-        dropdownToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            console.log("Dropdown toggle clicked");
-            dropdown.classList.toggle('open');
 
-        });
 
-        document.addEventListener('click', function(e) {
-            if (!dropdown.contains(e.target)) {
-                console.log("Clicked outside dropdown");
-                dropdown.classList.remove('open');
-            }
-        });
-    } else {
-        console.error("Dropdown toggle or dropdown not found");
-    }
+
 });
