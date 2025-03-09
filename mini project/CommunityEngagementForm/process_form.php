@@ -18,25 +18,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Phone number validation (Only 10 digits)
     if (!preg_match("/^\d{10}$/", $phone)) {
-        die("Invalid phone number. It must be exactly 10 digits long.");
+        echo("Invalid phone number. It must be exactly 10 digits long.");
+        
+
     }
+    // echo "Phone validation passed.<br>";
 
     echo "<!DOCTYPE html>
-    <html lang='en'>
-    <head>
-        <meta charset='UTF-8'>
-        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-        <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
-        <title>Submission Received</title>
-    </head>
-    <body class='bg-dark text-white'>
-        <div class='container my-5 text-center'>
-            <h1>Thank You, " . htmlspecialchars($fullName) . "!</h1>
-            <p>Your response has been recorded. We appreciate your interest in community engagement.</p>
-            <a href='community.html' class='btn btn-primary'>Back to Form</a>
-        </div>
-    </body>
-    </html>";
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <title>Submission Received</title>
+</head>
+<body class='bg-dark text-white'>
+    <div class='container my-5 text-center'>
+        <h1>Thank You, " . htmlspecialchars($fullName) . "!</h1>
+        <p>Your response has been recorded. We appreciate your interest in community engagement.</p>
+        <a href='HomePage/homepage.html' class='btn btn-primary'>Go to Homepage</a>
+    </div>
+</body>
+</html>";
+
 } else {
     header("Location: community.html");
     exit();
