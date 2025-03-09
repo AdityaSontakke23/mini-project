@@ -1,31 +1,74 @@
-/* Custom styles for the Community Engagement Form */
 body {
-    background-color: #f8f9fa;
-  }
-  
-  h1 {
-    font-weight: bold;
-  }
-  
-  .form-step {
-    /* Initially, all form steps are hidden except the active one */
-    display: none;
-  }
-  
-  .form-step.active {
-    display: block;
-  }
-  
-  fieldset {
-    border: none;
-  }
-  
-  legend {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  #progressBar {
-    margin-bottom: 20px;
-  }
-  
+  background-color: #a2e9bbdd; /* Light gray background like Google Forms */
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  max-width: 700px;
+  background: #ffffff;
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  align-self: center;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+.progress-bar {
+  height: 15px;
+  background-color: #4285F4; /* Google blue */
+  border-radius: 3px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+
+label.required::after {
+  content: "*";
+  color: red;
+}
+
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+input:focus, select:focus {
+  border-color: #4285F4;
+  outline: none;
+  box-shadow: 0 0 5px rgba(66, 133, 244, 0.3);
+}
+
+button {
+  background-color: #4285F4;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #357ae8;
+}
