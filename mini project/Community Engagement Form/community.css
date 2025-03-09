@@ -1,0 +1,31 @@
+/* Custom styles for the Community Engagement Form */
+body {
+    background-color: #f8f9fa;
+  }
+  
+  h1 {
+    font-weight: bold;
+  }
+  
+  .form-step {
+    /* Initially, all form steps are hidden except the active one */
+    display: none;
+  }
+  
+  .form-step.active {
+    display: block;
+  }
+  
+  fieldset {
+    border: none;
+  }
+  
+  legend {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  #progressBar {
+    margin-bottom: 20px;
+  }
+  
