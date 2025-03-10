@@ -3,14 +3,11 @@ session_start();
 
 $success = "";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Retrieve and sanitize form data
     $name = trim($_POST["name"]);
     $email = trim($_POST["email"]);
     $message = trim($_POST["message"]);
 
-    // Basic validation: check that all fields are filled
     if (!empty($name) && !empty($email) && !empty($message)) {
-        // In a real application, you might save this info to a database or send an email.
         $success = "Thank you, " . htmlspecialchars($name) . ". Your message has been received!";
     } else {
         $success = "Please fill in all fields.";
@@ -34,8 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <nav>
       <ul class="nav">
         <li class="nav-item"><a class="nav-link" href="../homepage/homepage.php">Home</a></li>
-        <!-- <li class="nav-item"><a class="nav-link" href="../homepage/homepage.php#features">Features</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li> -->
         <?php if (isset($_SESSION['username'])): ?>
           <li class="nav-item">
             <span class="nav-link">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
@@ -55,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <section class="contact-info container my-5">
     <h2>Contact Information</h2>
     <p>Email: info@climatesync.com</p>
-    <p>Phone: +1 234 567 890</p>
+    <p>Phone: +91 1234567890</p>
   </section>
 
   <!-- Contact Form Section -->
