@@ -19,7 +19,7 @@ $is_logged_in = isset($_SESSION['username']);
     <nav>
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="#about">About</a>
+          <!-- <a class="nav-link" href="#about">About</a> -->
         </li>
         
         <li class="nav-item dropdown">
