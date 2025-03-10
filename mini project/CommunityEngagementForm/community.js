@@ -29,13 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
                   return false;
               }
           }
-          // if (input.type === "tel") {
-          //     const phonePattern = /^[0-9]+$/;
-          //     if (!phonePattern.test(input.value) || input.value.length !== 10) {
-          //         alert("Phone number must be exactly 10 digits and contain only numbers.");
-          //         return false;
-          //     }
-          // }
+        
           if (!input.checkValidity()) {
               input.reportValidity();
               return false;

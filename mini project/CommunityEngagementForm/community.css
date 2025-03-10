@@ -1,5 +1,5 @@
 body {
-  background-color: #a2e9bbdd; /* Light gray background like Google Forms */
+  background-color: #a2e9bbdd; 
   font-family: 'Arial', sans-serif;
 }
 
@@ -22,7 +22,7 @@ h1 {
 
 .progress-bar {
   height: 15px;
-  background-color: #4285F4; /* Google blue */
+  background-color: #4285F4; 
   border-radius: 3px;
 }
 

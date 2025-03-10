@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClimateSync - Contact Us</title>
-  <!-- Bootstrap CSS for styling -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Optional: link to your custom CSS -->
+
   <link rel="stylesheet" href="../contact/contact.css">
 </head>
 <body>
@@ -46,14 +46,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </nav>
   </header>
 
-  <!-- Contact Information Section -->
+  
   <section class="contact-info container my-5">
     <h2>Contact Information</h2>
     <p>Email: info@climatesync.com</p>
     <p>Phone: +91 1234567890</p>
   </section>
 
-  <!-- Contact Form Section -->
+  
   <section class="contact-form container my-5">
     <h2>Send Us a Message/Feedback</h2>
     <?php if (!empty($success)): ?>
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <p>&copy; 2025 ClimateSync. Mini project.</p>
   </footer>
 
-  <!-- Bootstrap Bundle with Popper for dropdown functionality -->
+  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

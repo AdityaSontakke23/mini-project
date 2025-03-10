@@ -1,4 +1,3 @@
-// JavaScript for form validation
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById('login-form');
     const email = document.getElementById('email');

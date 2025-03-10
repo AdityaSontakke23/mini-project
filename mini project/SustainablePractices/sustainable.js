@@ -112,7 +112,7 @@ const cities = [
   
   document.getElementById("citySelect").addEventListener("change", function() {
     const selectedCityName = this.value;
-    // Find the city object based on the selected city name
+    
     const city = cities.find(city => city.name === selectedCityName);
     displayPractices(city ? city.practices : []);
   });

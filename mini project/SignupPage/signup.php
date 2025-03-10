@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = trim($_POST["password"]);
     $confirm_password = trim($_POST["confirm-password"]);
 
-    // Basic validation
+    
     if (empty($name) || empty($email) || empty($password) || empty($confirm_password)) {
         $error = "All fields are required.";
     } elseif ($password !== $confirm_password) {

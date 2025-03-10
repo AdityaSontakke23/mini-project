@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Smooth Scrolling
     document.querySelectorAll('nav ul li a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -9,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Sticky Header
     const header = document.getElementById('main-header');
     window.addEventListener('scroll', function () {
         if (window.scrollY > 50) {
@@ -19,14 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Dark/Light Mode Toggle
+    
     const themeToggle = document.getElementById('theme-toggle');
     themeToggle.addEventListener('click', function () {
         document.body.classList.toggle('dark-mode');
         themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀' : '🌙';
     });
 
-    // Typing Effect
     const text = "Welcome to ClimateSync";
     let index = 0;
     function typeEffect() {
@@ -38,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     typeEffect();
 
-    // Reveal on Scroll
     const fadeElements = document.querySelectorAll('.fade-in');
     function revealOnScroll() {
         fadeElements.forEach(element => {
@@ -51,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 
-    // Back to Top Button
     const backToTop = document.getElementById("back-to-top");
     window.addEventListener("scroll", function () {
         if (window.scrollY > 200) {
@@ -63,9 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
     backToTop.addEventListener("click", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
-
-
-
 
 
 });

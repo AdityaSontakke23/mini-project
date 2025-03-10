@@ -11,18 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rating = htmlspecialchars(trim($_POST['rating']));
     $actions = htmlspecialchars(trim($_POST['actions']));
 
-    // Email validation (format: word@word.word and no special characters)
     if (!preg_match("/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]+$/", $email) || preg_match("/[!#$%^&*(),?\":{}|<>]/", $email)) {
         die("Invalid email format. Please enter a valid email like example@domain.com");
     }
 
-    // Phone number validation (Only 10 digits)
     if (!preg_match("/^\d{10}$/", $phone)) {
         echo("Invalid phone number. It must be exactly 10 digits long.");
         
 
     }
-    // echo "Phone validation passed.<br>";
 
     echo "<!DOCTYPE html>
 <html lang='en'>

@@ -7,14 +7,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = document.getElementById("password").value;
         const confirmPassword = document.getElementById("confirm-password").value;
 
-        // Validate that all fields are filled
         if (!name || !email || !password || !confirmPassword) {
             e.preventDefault();
             alert("Please fill in all fields.");
             return;
         }
 
-        // Validate that password and confirm password match
         if (password !== confirmPassword) {
             e.preventDefault();
             alert("Passwords do not match. Please try again.");
