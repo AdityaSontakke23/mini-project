@@ -35,7 +35,7 @@ $is_logged_in = isset($_SESSION['username']);
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact</a>
+          <a class="nav-link button" href="../contact/contact.php">Contact</a>
         </li>
 
         <?php if ($is_logged_in): ?>
