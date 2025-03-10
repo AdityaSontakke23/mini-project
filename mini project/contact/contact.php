@@ -30,17 +30,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <h1>ClimateSync</h1>
     <nav>
       <ul class="nav">
-        <li class="nav-item"><a class="nav-link" href="../homepage/homepage.php">Home</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="../homepage/homepage.php">Home</a></li>
         <?php if (isset($_SESSION['username'])): ?>
           <li class="nav-item">
-            <span class="nav-link">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
+            <span class="nav-link text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
           </li>
           <li class="nav-item">
-            <a class="nav-link button" href="../logout.php">Log Out</a>
+            <a class="nav-link button text-white" href="../logout.php">Log Out</a>
           </li>
         <?php else: ?>
-          <li class="nav-item"><a class="nav-link button" href="../LoginPage/login.php">Log In</a></li>
-          <li class="nav-item"><a class="nav-link button" href="../SignupPage/signup.php">Sign Up</a></li>
+          <li class="nav-item"><a class="nav-link button text-white" href="../LoginPage/login.php">Log In</a></li>
+          <li class="nav-item"><a class="nav-link button text-white" href="../SignupPage/signup.php">Sign Up</a></li>
         <?php endif; ?>
       </ul>
     </nav>
