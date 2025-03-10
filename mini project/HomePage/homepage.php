@@ -40,7 +40,7 @@ $is_logged_in = isset($_SESSION['username']);
 
         <?php if ($is_logged_in): ?>
           <li class="nav-item">
-            <span class="nav-link">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+          <span class="nav-link text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
           </li>
           <li class="nav-item">
             <a class="nav-link button" href="../LoginPage/logout.php">Log Out</a>
