@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <nav>
         <ul>
             <li><a href="../HomePage/homepage.php">Home</a></li>
-            <li><a href="#features">Features</a></li>
+            <!-- <li><a href="#features">Features</a></li> -->
             <li><a href="#contact">Contact</a></li>
             <li><a href="../SignupPage/signup.php">Sign Up</a></li>
         </ul>
