@@ -5,42 +5,43 @@ function fetchAQI() {
         return;
     }
 
-    let apiKey = "dc98805a7a56c06b10a11ccf5a0564225321ef02"; // API Key
-    let url = `https://api.waqi.info/feed/${city}/?token=${apiKey}`;
+    let aqiApiKey = "dc98805a7a56c06b10a11ccf5a0564225321ef02"; // API Key for AQI
+    let weatherApiKey = "d41ec4c989434d63a7883906251003"; // WeatherAPI key
 
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log("API Response:", data);
+    let aqiUrl = `https://api.waqi.info/feed/${city}/?token=${aqiApiKey}`;
+    let weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${city}`;
 
-            if (data.status === "ok") {
-                let aqi = data.data.aqi;
-                let temperature = data.data.iaqi.t ? `${data.data.iaqi.t.v}°C` : "N/A";
-                let category = getAQICategory(aqi);
+    Promise.all([
+        fetch(aqiUrl).then(response => response.json()),
+        fetch(weatherUrl).then(response => response.json())
+    ])
+    .then(([aqiData, weatherData]) => {
+        console.log("AQI Response:", aqiData);
+        console.log("WeatherAPI Response:", weatherData);
 
-                document.getElementById("result").innerHTML = `
-                    <div class="result-card">
-                        <h4>City: ${city}</h4>
-                        <p><strong>AQI:</strong> ${aqi}</p>
-                        <p><strong>Category:</strong> ${category}</p>
-                        <p><strong>Temperature:</strong> ${temperature}</p>
-                    </div>
-                `;
-            } else {
-                throw new Error("City Not Found. Enter Appropriate City Name.");
-            }
-        })
-        .catch(error => {
-            console.error("Error fetching AQI data:", error);
+        if (aqiData.status === "ok" && weatherData.location) {
+            let aqi = aqiData.data.aqi;
+            let temperature = weatherData.current.temp_c ? `${weatherData.current.temp_c}°C` : "N/A";
+            let category = getAQICategory(aqi);
+
             document.getElementById("result").innerHTML = `
-                <p class="text-danger">${error.message}</p>
+                <div class="result-card">
+                    <h4>City: ${city}</h4>
+                    <p><strong>AQI:</strong> ${aqi}</p>
+                    <p><strong>Category:</strong> ${category}</p>
+                    <p><strong>Temperature:</strong> ${temperature}</p>
+                </div>
             `;
-        });
+        } else {
+            throw new Error("City Not Found. Enter an Appropriate City Name.");
+        }
+    })
+    .catch(error => {
+        console.error("Error fetching AQI or Temperature data:", error);
+        document.getElementById("result").innerHTML = `
+            <p class="text-danger">${error.message}</p>
+        `;
+    });
 }
 
 function getAQICategory(aqi) {
