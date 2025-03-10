@@ -1,11 +1,14 @@
+<?php
+session_start();
+$is_logged_in = isset($_SESSION['username']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- head section -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ClimateSync</title>
-  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="homepage.css">
   <script src="homepage.js" defer></script>
@@ -18,27 +21,38 @@
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
         </li>
-        <!-- Features Dropdown using dark variant -->
+        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Features
           </a>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li><a class="dropdown-item" href="../LiveClimateDataAQI/aqicheck.html">AQI Check</a></li>
-            <li><a class="dropdown-item" href="../Awareness/Awareness.html">Awareness</a></li>
-            <li><a class="dropdown-item" href="../SustainablePractices/sustainable.html">Sustainable Practices</a></li>
-            <li><a class="dropdown-item" href="../CommunityEngagementForm/community.html">Survey</a></li>
+            <li><a class="dropdown-item feature-link" href="../LiveClimateDataAQI/aqicheck.html">AQI Check</a></li>
+            <li><a class="dropdown-item feature-link" href="../Awareness/Awareness.html">Awareness</a></li>
+            <li><a class="dropdown-item feature-link" href="../SustainablePractices/sustainable.html">Sustainable Practices</a></li>
+            <li><a class="dropdown-item feature-link" href="../CommunityEngagementForm/community.html">Survey</a></li>
           </ul>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#contact">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link button" href="../LoginPage/login.html">Log In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link button" href="../SignupPage/signup.html">Sign Up</a>
-        </li>
+
+        <?php if ($is_logged_in): ?>
+          <li class="nav-item">
+            <span class="nav-link">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link button" href="../LoginPage/logout.php">Log Out</a>
+          </li>
+        <?php else: ?>
+          <li class="nav-item">
+            <a class="nav-link button" href="../LoginPage/login.php">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link button" href="../SignupPage/signup.php">Sign Up</a>
+          </li>
+        <?php endif; ?>
       </ul>
     </nav>
   </header>
@@ -72,8 +86,20 @@
   <footer class="text-center p-4">
     <p>&copy; 2025 ClimateSync. Mini project.</p>
   </footer>
-  
-  <!-- Bootstrap Bundle with Popper for dropdown functionality -->
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const featureLinks = document.querySelectorAll(".feature-link");
+      featureLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+          <?php if (!$is_logged_in): ?>
+            event.preventDefault();
+            window.location.href = "../LoginPage/login.php";
+          <?php endif; ?>
+        });
+      });
+    });
+  </script>
 </body>
 </html>
