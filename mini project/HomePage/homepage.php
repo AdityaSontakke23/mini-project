@@ -29,7 +29,7 @@ $is_logged_in = isset($_SESSION['username']);
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><a class="dropdown-item feature-link" href="../LiveClimateDataAQI/aqicheck.html">AQI Check</a></li>
             <li><a class="dropdown-item feature-link" href="../Awareness/Awareness.html">Awareness</a></li>
-            <li><a class="dropdown-item feature-link" href="../SustainablePractices/sustainable.html">Sustainable Practices</a></li>
+            <li><a class="dropdown-item feature-link" href="../SustainablePractices/sustainable.php">Sustainable Practices</a></li>
             <li><a class="dropdown-item feature-link" href="../CommunityEngagementForm/community.html">Survey</a></li>
           </ul>
         </li>
