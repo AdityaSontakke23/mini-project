@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <span class="nav-link text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span>
           </li>
           <li class="nav-item">
-            <a class="nav-link button text-white" href="../logout.php">Log Out</a>
+            <a class="nav-link button text-white" href="../LoginPage/logout.php">Log Out</a>
           </li>
         <?php else: ?>
           <li class="nav-item"><a class="nav-link button text-white" href="../LoginPage/login.php">Log In</a></li>
