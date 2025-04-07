@@ -6,9 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
 
-    // Check for hardcoded admin credentials first
     $adminEmail = "admin@climatesync.com";
-    $adminPassword = "admin123"; // You can hash and use password_verify if preferred
+    $adminPassword = "admin123";
 
     if ($email === $adminEmail && $password === $adminPassword) {
         $_SESSION["username"] = "admin";
