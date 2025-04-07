@@ -9,7 +9,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Handle New City Submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_new_city'])) {
     $stmt = $conn->prepare("INSERT INTO sustainable_practices (city, category, practice1_title, practice1_description, practice2_title, practice2_description, practice3_title, practice3_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param(
@@ -29,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_new_city'])) {
     exit;
 }
 
-// Fetch Practices by City (AJAX)
 if (isset($_GET['city'])) {
     $city = $conn->real_escape_string($_GET['city']);
     $sql = "SELECT * FROM sustainable_practices WHERE city = '$city' LIMIT 1";
@@ -43,7 +41,6 @@ if (isset($_GET['city'])) {
     exit;
 }
 
-// Load distinct cities for dropdown
 $sql = "SELECT DISTINCT city FROM sustainable_practices";
 $result = $conn->query($sql);
 ?>
