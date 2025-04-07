@@ -2,23 +2,57 @@
 session_start();
 $error = "";
 
+$host = "localhost";
+$db_user = "root";
+$db_pass = "root";
+$db_name = "ClimateSync";
+
+$conn = new mysqli($host, $db_user, $db_pass, $db_name);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = trim($_POST["name"]);
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
     $confirm_password = trim($_POST["confirm-password"]);
 
-    
     if (empty($name) || empty($email) || empty($password) || empty($confirm_password)) {
         $error = "All fields are required.";
     } elseif ($password !== $confirm_password) {
         $error = "Passwords do not match.";
     } else {
-        $_SESSION["username"] = $name;
-        header("Location: ../HomePage/homepage.php");
-        exit();
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            $error = "Email already exists.";
+        } else {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+            $insert_stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+            $insert_stmt->bind_param("sss", $name, $email, $hashed_password);
+
+            if ($insert_stmt->execute()) {
+                $_SESSION["username"] = $name;
+                header("Location: ../HomePage/homepage.php");
+                exit();
+            } else {
+                $error = "Error creating account. Please try again.";
+            }
+
+            $insert_stmt->close();
+        }
+
+        $stmt->close();
     }
 }
+
+$conn->close();
 ?>
 
 <!DOCTYPE html>

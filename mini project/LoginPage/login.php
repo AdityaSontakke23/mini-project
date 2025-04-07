@@ -2,25 +2,40 @@
 session_start();
 $error = "";
 
-
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
-    $dummyEmail = "aditya@gmail.com";
-    $dummyPassword = "password123"; 
-
     $email = trim($_POST["email"]);
     $password = trim($_POST["password"]);
 
-    if ($email === $dummyEmail && $password === $dummyPassword) {
-        $_SESSION["username"] = "aditya"; 
-        header("Location: ../HomePage/homepage.php");
-        exit();
+    $conn = new mysqli("localhost", "root", "root", "ClimateSync");
+
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    $stmt = $conn->prepare("SELECT username, password FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($username, $hashedPassword);
+        $stmt->fetch();
+
+        if (password_verify($password, $hashedPassword)) {
+            $_SESSION["username"] = $username;
+            header("Location: ../HomePage/homepage.php");
+            exit();
+        } else {
+            $error = "Invalid email or password.";
+        }
     } else {
         $error = "Invalid email or password.";
     }
+
+    $stmt->close();
+    $conn->close();
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +50,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <nav>
         <ul>
             <li><a href="../HomePage/homepage.php">Home</a></li>
-            <!-- <li><a href="#features">Features</a></li> -->
             <li><a href="../contact/contact.php">Contact</a></li>
             <li><a href="../SignupPage/signup.php">Sign Up</a></li>
         </ul>
