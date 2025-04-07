@@ -1,10 +1,48 @@
 /* Reset and base styles */
 body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f0f9ff, #cbebff);
-    color: #333;
+}
+
+
+header {
+    background-color: #343a40 !important;
+    color: #ffffff !important;
+    padding: 15px 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color:#ffffff !important;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav ul li a {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: border-radius 0.3s ease;
+    padding: 10px 15px;
+}
+
+header nav ul li a:hover {
+    background: rgba(93, 93, 93, 0.6);
+    border-radius: 20px;
 }
 
 /* Center everything inside the main container */
@@ -16,6 +54,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
+    align-self: center;
 }
 
 /* Page Title */
@@ -56,7 +95,7 @@ h1 {
 .section-buttons button:hover {
     transform: scale(1.05);
     filter: brightness(1.1);
-}
+} 
 
 /* Inner Options */
 .options-container {
@@ -88,7 +127,7 @@ h1 {
 .option-buttons button:hover {
     transform: translateY(-2px);
     background-color: #495057;
-}
+} 
 
 /* Form inputs */
 form input[type="text"],
@@ -147,4 +186,4 @@ table th {
 
 table tr:nth-child(even) {
     background-color: #f2f2f2;
-}
+} 

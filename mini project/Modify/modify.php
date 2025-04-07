@@ -61,11 +61,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <title>ClimateSync Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="Modify/modify.css">
+    <link rel="stylesheet" href="modify.css">
 </head>
 <body>
-    <div class="container text-center">
-        <h1 class="mb-4"><i class="bi bi-globe-americas"></i> ClimateSync Admin Panel</h1>
+<header class="d-flex justify-content-between align-items-center p-3">
+    <h1>ClimateSync Admin Page</h1>
+    <nav>
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link button text-white" href="../homepage/homepage.php">Home</a></li>
+        <?php if (isset($_SESSION['username'])): ?>
+          <li class="nav-item"><span class="nav-link text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></span></li>
+          <li class="nav-item"><a class="nav-link button text-white" href="../LoginPage/logout.php">Log Out</a></li>
+        <?php endif; ?>
+      </ul>
+    </nav>
+  </header>
+    <div class="container text-center align-items-center">
 
         <?php if (!$manage): ?>
             <div class="d-flex justify-content-center gap-4">
