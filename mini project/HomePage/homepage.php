@@ -1,6 +1,7 @@
 <?php
 session_start();
 $is_logged_in = isset($_SESSION['username']);
+$is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
 ?>
 
 <!DOCTYPE html>
@@ -18,10 +19,6 @@ $is_logged_in = isset($_SESSION['username']);
     <h1>ClimateSync</h1>
     <nav>
       <ul class="nav">
-        <li class="nav-item">
-          <!-- <a class="nav-link" href="#about">About</a> -->
-        </li>
-        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Features
@@ -40,8 +37,13 @@ $is_logged_in = isset($_SESSION['username']);
 
         <?php if ($is_logged_in): ?>
           <li class="nav-item">
-          <span class="nav-link text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+            <span class="nav-link text-white">Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
           </li>
+          <?php if ($is_admin): ?>
+            <li class="nav-item">
+              <a class="nav-link button btn-warning" href="../Modify/modify.php">Modify</a>
+            </li>
+          <?php endif; ?>
           <li class="nav-item">
             <a class="nav-link button" href="../LoginPage/logout.php">Log Out</a>
           </li>
@@ -77,12 +79,12 @@ $is_logged_in = isset($_SESSION['username']);
       <li>Awareness about sustainable development and survey</li>
     </ul>
   </section>
-  
+
   <section id="contact" class="p-4">
     <h2>Contact Us</h2>
     <p>Get in touch to learn more about how you can contribute to sustainable urban development.</p>
   </section>
-  
+
   <footer class="text-center p-4">
     <p>&copy; 2025 ClimateSync. Mini project.</p>
   </footer>
