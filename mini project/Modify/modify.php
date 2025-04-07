@@ -29,25 +29,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($action === 'add') {
             $city = $_POST['city'];
             $category = $_POST['category'];
-            $p1 = $_POST['practice1'];
-            $d1 = $_POST['desc1'];
-            $p2 = $_POST['practice2'];
-            $d2 = $_POST['desc2'];
-            $p3 = $_POST['practice3'];
-            $d3 = $_POST['desc3'];
-            $conn->query("INSERT INTO sustainable_practices (city, category, practice1, desc1, practice2, desc2, practice3, desc3)
+            $p1 = $_POST['practice1_title'];
+            $d1 = $_POST['practice1_description'];
+            $p2 = $_POST['practice2_title'];
+            $d2 = $_POST['practice2_description'];
+            $p3 = $_POST['practice3_title'];
+            $d3 = $_POST['practice3_description'];
+            $conn->query("INSERT INTO sustainable_practices (city, category, practice1_title, practice1_description, practice2_title, practice2_description, practice3_title, practice3_description)
                           VALUES ('$city', '$category', '$p1', '$d1', '$p2', '$d2', '$p3', '$d3')");
         } elseif ($action === 'update') {
             $city = $_POST['city'];
             $category = $_POST['category'];
-            $p1 = $_POST['practice1'];
-            $d1 = $_POST['desc1'];
-            $p2 = $_POST['practice2'];
-            $d2 = $_POST['desc2'];
-            $p3 = $_POST['practice3'];
-            $d3 = $_POST['desc3'];
-            $conn->query("UPDATE sustainable_practices SET category='$category', practice1='$p1', desc1='$d1',
-                          practice2='$p2', desc2='$d2', practice3='$p3', desc3='$d3' WHERE city='$city'");
+            $p1 = $_POST['practice1_title'];
+            $d1 = $_POST['practice1_description'];
+            $p2 = $_POST['practice2_title'];
+            $d2 = $_POST['practice2_description'];
+            $p3 = $_POST['practice3_title'];
+            $d3 = $_POST['practice3_description'];
+            $conn->query("UPDATE sustainable_practices SET category='$category', practice1_title='$p1', practice1_description='$d1',
+                          practice2_title='$p2', practice2_description='$d2', practice3_title='$p3', practice3_description='$d3' WHERE city='$city'");
         } elseif ($action === 'delete') {
             $city = $_POST['city'];
             $conn->query("DELETE FROM sustainable_practices WHERE city='$city'");
@@ -143,12 +143,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php elseif ($action === 'update' || $action === 'add'): ?>
                     <form method="post">
                         <input type="text" name="city" placeholder="City Name" required class="form-control mb-2">
-                        <input type="text" name="practice1" placeholder="Practice 1" class="form-control mb-1">
-                        <input type="text" name="desc1" placeholder="Description 1" class="form-control mb-2">
-                        <input type="text" name="practice2" placeholder="Practice 2" class="form-control mb-1">
-                        <input type="text" name="desc2" placeholder="Description 2" class="form-control mb-2">
-                        <input type="text" name="practice3" placeholder="Practice 3" class="form-control mb-1">
-                        <input type="text" name="desc3" placeholder="Description 3" class="form-control mb-2">
+                        <input type="text" name="category" placeholder="Category" required class="form-control mb-2">
+                        <input type="text" name="practice1_title" placeholder="Practice 1" class="form-control mb-1">
+                        <input type="text" name="practice1_description" placeholder="Description 1" class="form-control mb-2">
+                        <input type="text" name="practice2_title" placeholder="Practice 2" class="form-control mb-1">
+                        <input type="text" name="practice2_description" placeholder="Description 2" class="form-control mb-2">
+                        <input type="text" name="practice3_title" placeholder="Practice 3" class="form-control mb-1">
+                        <input type="text" name="practice3_description" placeholder="Description 3" class="form-control mb-2">
                         <button type="submit" class="btn btn-warning"><?= $action === 'update' ? 'Update' : 'Add' ?></button>
                     </form>
                 <?php elseif ($action === 'delete'): ?>

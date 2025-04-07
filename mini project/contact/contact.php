@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!empty($name) && !empty($email) && !empty($message)) {
         $servername = "localhost";
-        $username = "root;
+        $username = "root";
         $password = "root";
         $dbname = "ClimateSync";
 
