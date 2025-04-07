@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Apr 07, 2025 at 02:42 PM
+-- Generation Time: Apr 07, 2025 at 03:28 PM
 -- Server version: 8.0.40
 -- PHP Version: 8.3.14
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `ClimateSync`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `responses`
+--
+
+CREATE TABLE `responses` (
+  `id` int NOT NULL,
+  `fullName` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `phone` varchar(15) DEFAULT NULL,
+  `city` varchar(100) NOT NULL,
+  `contribution` text NOT NULL,
+  `volunteer` enum('Yes','No') NOT NULL,
+  `participationMode` enum('Online','In-person','Both') NOT NULL,
+  `skills` text NOT NULL,
+  `rating` int NOT NULL,
+  `actions` text NOT NULL,
+  `submitted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `responses`
+--
+
+INSERT INTO `responses` (`id`, `fullName`, `email`, `phone`, `city`, `contribution`, `volunteer`, `participationMode`, `skills`, `rating`, `actions`, `submitted_at`) VALUES
+(2, 'Aayush', 'aayush@gmail.com', '123456789', 'Mumbai', 'Contribution', 'Yes', 'Online', 'All', 5, 'All', '2025-04-07 15:21:38'),
+(3, 'Aayush', 'aayush@gmail.com', '1234567890', 'Mumbai', 'Contribute', 'Yes', 'Online', 'All', 5, 'All', '2025-04-07 15:24:29');
 
 -- --------------------------------------------------------
 
@@ -73,7 +102,9 @@ INSERT INTO `sustainable_practices` (`id`, `city`, `category`, `practice1_title`
 (27, 'Hyderabad', 'urban', 'Water Use', 'Smart metering for buildings', 'Waste Management', 'Centralised waste processing plant', 'Noise', 'Silent zones near hospitals'),
 (28, 'Bikaner', 'rural', 'Desert Farming', 'Use of khadin system', 'Wind Energy', 'Install micro wind turbines', 'Soil Health', 'Prevent overgrazing'),
 (29, 'Bhopal', 'urban', 'Green Transport', 'Expand public bus system', 'Air Quality', 'Real-time pollution display boards', 'Urban Farming', 'Promote kitchen gardens'),
-(30, 'Kalahandi', 'rural', 'Food Security', 'Promote millet cultivation', 'Water Safety', 'Check dams for safe drinking', 'Tribal Rights', 'Involve tribes in forest planning');
+(30, 'Kalahandi', 'rural', 'Food Security', 'Promote millet cultivation', 'Water Safety', 'Check dams for safe drinking', 'Tribal Rights', 'Involve tribes in forest planning'),
+(31, 'City1', 'urban', 'Practice1', 'PracticeDescription1', 'Practice2', 'PracticeDescription2', 'Practice3', 'PracticeDescription3'),
+(32, 'City2', 'rural', 'CityPractice1', 'CityDescription1', 'CityPractice2', 'CityDescription2', 'CityPractice3', 'CityDescription3');
 
 -- --------------------------------------------------------
 
@@ -100,6 +131,12 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
 --
 
 --
+-- Indexes for table `responses`
+--
+ALTER TABLE `responses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `sustainable_practices`
 --
 ALTER TABLE `sustainable_practices`
@@ -116,10 +153,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `responses`
+--
+ALTER TABLE `responses`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `sustainable_practices`
 --
 ALTER TABLE `sustainable_practices`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `users`
