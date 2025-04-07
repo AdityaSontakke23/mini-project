@@ -55,6 +55,20 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="sustainable.css">
 </head>
 <body class="bg-light">
+<header>
+        <h1>ClimateSync</h1>
+        <nav>
+            <ul>
+                <li><a href="../HomePage/homepage.php">Home</a></li>
+                <!-- <li><a href="#features">Features</a></li> -->
+                <li><a href="../contact/contact.php">Contact</a></li>
+                <li><a href="../Awareness/Awareness.html">Awareness</a></li>
+                <!-- <li><a href="../LoginPage/login.html">Log In</a></li> -->
+                <li><a href="../LiveClimateDataAQI/aqicheck.html">AQI Check</a></li>
+
+            </ul>
+        </nav>
+      </header>
 
 <div class="container mt-5">
     <h2 class="text-center mb-4">Sustainable Practices by City</h2>
@@ -73,7 +87,7 @@ $result = $conn->query($sql);
 
     <hr class="my-5">
 
-<h4 class="text-white">Add your City?</h4>
+<h4 class="text-white">City not found?</h4>
 <!-- <p class="text-white">Click below to add it along with sustainable practices:</p> -->
 
 <button class="btn btn-outline-light mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#addCityForm" aria-expanded="false" aria-controls="addCityForm">
