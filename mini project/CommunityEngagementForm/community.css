@@ -3,6 +3,42 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
+header {
+  background-color: rgba(22, 25, 28, 0.84) !important;
+  /* color: #ffffff !important; */
+  padding: 15px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+header nav ul li {
+  margin-right: 20px;
+}
+
+header nav ul li a {
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: border-radius 0.3s ease;
+  padding: 10px 15px;
+}
+
+header nav ul li a:hover {
+  background: rgba(93, 93, 93, 0.6);
+  border-radius: 20px;
+}
+
 .container {
   max-width: 700px;
   background: #ffffff;
@@ -13,12 +49,6 @@ body {
   align-self: center;
 }
 
-h1 {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-  color: #333;
-}
 
 .progress-bar {
   height: 15px;
