@@ -79,23 +79,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="container text-center align-items-center">
 
         <?php if (!$manage): ?>
-            <div class="d-flex justify-content-center gap-4">
+            <div class="d-flex justify-content-center gap-4 section-buttons">
                 <a href="modify.php?manage=users" class="btn btn-primary btn-lg">Manage Users</a>
                 <a href="modify.php?manage=practices" class="btn btn-success btn-lg">Manage Sustainable Practices</a>
+                <a href="modify.php?manage=survey" class="btn btn-warning btn-lg text-white">View Survey Responses</a>
+                <a href="modify.php?manage=contact" class="btn btn-danger btn-lg">View Feedback</a>
             </div>
+
         <?php else: ?>
             <div class="mb-4">
                 <a href="modify.php" class="btn btn-secondary">← Back to Main</a>
             </div>
 
             <?php if ($manage === 'users'): ?>
-                <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
-                    <a href="modify.php?manage=users&action=add" class="btn btn-outline-primary">Add User</a>
-                    <a href="modify.php?manage=users&action=edit" class="btn btn-outline-secondary">Edit User</a>
+                <h2 class="mb-4">Manage Users</h2>
+
+                <div class="d-flex justify-content-center gap-3 mb-4">
+                    <a href="modify.php?manage=users&action=view" class="btn btn-outline-primary">View Users</a>
+                    <a href="modify.php?manage=users&action=add" class="btn btn-outline-success">Add User</a>
+                    <a href="modify.php?manage=users&action=edit" class="btn btn-outline-warning">Edit User</a>
                     <a href="modify.php?manage=users&action=delete" class="btn btn-outline-danger">Delete User</a>
                 </div>
-
-                <?php if ($action === 'add'): ?>
+                <?php if ($action === 'view'): ?>
+                    <table class="table table-bordered">
+                        <thead><tr><th>ID</th><th>Username</th><th>Email</th></tr></thead>
+                        <tbody>
+                            <?php
+                            $result = $conn->query("SELECT * FROM users");
+                            while ($row = $result->fetch_assoc()):
+                            ?>
+                            <tr>
+                                <td><?= $row['id'] ?></td>
+                                <td><?= $row['username'] ?></td>
+                                <td><?= $row['email'] ?></td>
+                            </tr>
+                            <?php endwhile; ?>
+                        </tbody>
+                    </table>
+                <?php elseif ($action === 'add'): ?>
                     <form method="post">
                         <input type="text" name="username" placeholder="Username" required class="form-control mb-2">
                         <input type="email" name="email" placeholder="Email" required class="form-control mb-2">
@@ -117,6 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
 
             <?php elseif ($manage === 'practices'): ?>
+                <h2 class="mb-4">Manage Sustainable Practices</h2>
                 <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
                     <a href="modify.php?manage=practices&action=view" class="btn btn-outline-success">View Practices</a>
                     <a href="modify.php?manage=practices&action=view_cities" class="btn btn-outline-info">View Cities</a>
@@ -169,7 +191,80 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 <?php endif; ?>
-            <?php endif; ?>
+                <?php elseif ($manage === 'survey'): ?>
+                    <h2 class="mb-4">Survey Responses</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>City</th>
+                                    <th>Contribution</th>
+                                    <th>Volunteer</th>
+                                    <th>Participation Mode</th>
+                                    <th>Skills</th>
+                                    <th>Rating</th>
+                                    <th>Actions</th>
+                                    <th>Submitted At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $result = $conn->query("SELECT * FROM responses");
+                                    while ($row = $result->fetch_assoc()):
+                                ?>
+                            <tr>
+                                <td><?= $row['id'] ?></td>
+                                <td><?= $row['fullName'] ?></td>
+                                <td><?= $row['email'] ?></td>
+                                <td><?= $row['phone'] ?></td>
+                                <td><?= $row['city'] ?></td>
+                                <td><?= $row['contribution'] ?></td>
+                                <td><?= $row['volunteer'] ?></td>
+                                <td><?= $row['participationMode'] ?></td>
+                                <td><?= $row['skills'] ?></td>
+                                <td><?= $row['rating'] ?></td>
+                                <td><?= $row['actions'] ?></td>
+                                <td><?= $row['submitted_at'] ?></td>
+                            </tr>
+                            <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php elseif ($manage === 'contact'): ?>
+                    <h2 class="mb-4">View Feedback</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Message</th>
+                                    <th>Submitted At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $result = $conn->query("SELECT * FROM contact_messages");
+                                    while ($row = $result->fetch_assoc()):
+                                ?>
+                            <tr>
+                                <td><?= $row['id'] ?></td>
+                                <td><?= $row['name'] ?></td>
+                                <td><?= $row['email'] ?></td>
+                                <td><?= $row['message'] ?></td>
+                                <td><?= $row['submitted_at'] ?></td>
+                            </tr>
+                            <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
+                
         <?php endif; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
