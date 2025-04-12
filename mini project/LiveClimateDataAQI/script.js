@@ -5,8 +5,8 @@ function fetchAQI() {
         return;
     }
 
-    let aqiApiKey = "dc98805a7a56c06b10a11ccf5a0564225321ef02"; // API Key for AQI
-    let weatherApiKey = "d41ec4c989434d63a7883906251003"; // WeatherAPI key
+    let aqiApiKey = "dc98805a7a56c06b10a11ccf5a0564225321ef02"; // AQICN API
+    let weatherApiKey = "d41ec4c989434d63a7883906251003"; // WeatherAPI
 
     let aqiUrl = `https://api.waqi.info/feed/${city}/?token=${aqiApiKey}`;
     let weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${weatherApiKey}&q=${city}`;
@@ -32,6 +32,10 @@ function fetchAQI() {
                     <p><strong>Temperature:</strong> ${temperature}</p>
                 </div>
             `;
+
+            let clampedAQI = Math.max(0, Math.min(aqi, 500));
+            let pointerPosition = (clampedAQI / 300) * 100;
+            document.getElementById("aqiPointer").style.left = `${pointerPosition}%`;
         } else {
             throw new Error("City Not Found. Enter an Appropriate City Name.");
         }
@@ -41,21 +45,15 @@ function fetchAQI() {
         document.getElementById("result").innerHTML = `
             <p class="text-danger">${error.message}</p>
         `;
+        document.getElementById("aqiPointer").style.left = `-9999px`;
     });
 }
 
 function getAQICategory(aqi) {
-    if (aqi <= 50) {
-        return "Good";
-    } else if (aqi <= 100) {
-        return "Moderate";
-    } else if (aqi <= 150) {
-        return "Unhealthy for Sensitive Groups";
-    } else if (aqi <= 200) {
-        return "Unhealthy";
-    } else if (aqi <= 300) {
-        return "Very Unhealthy";
-    } else {
-        return "Hazardous";
-    }
+    if (aqi <= 50) return "Good";
+    else if (aqi <= 100) return "Moderate";
+    else if (aqi <= 150) return "Unhealthy for Sensitive Groups";
+    else if (aqi <= 200) return "Unhealthy";
+    else if (aqi <= 300) return "Very Unhealthy";
+    else return "Hazardous";
 }
