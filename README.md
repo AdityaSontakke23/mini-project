@@ -1,8 +1,8 @@
 # mini-project
-##This is our mini project on SDG-13
-#Title : **ClimateSync**
 
-##To run this project : 
+Title : **ClimateSync**
+
+-> To run this project : 
   1) git clone it
   2) install the clone on your pc in xampp folder in htdocs.
   3) make sure you have mamp/xampp as its hosted on localhost .
